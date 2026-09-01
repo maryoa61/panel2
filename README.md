@@ -1,29 +1,101 @@
-# Welcome to your Lovable project
+# وب‌سایت فروش پنل‌های مدیریت اختصاصی
 
-This project was built with [Lovable](https://lovable.dev).
+ویترین فروش تک‌صفحه‌ای و چند-محصولی، با تم تیره، گلس‌مورفیسم، ذرات پس‌زمینه و RTL کامل.
+تمام محتوا (محصولات، پلن‌ها، سوالات متداول، نظرات، ترتیب بخش‌ها) از فایل‌های JSON در `src/data/` خوانده می‌شود.
 
-## Build with Lovable
+## اجرای محلی
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+```bash
+bun install
+bun run dev      # http://localhost:8080
+bun run build    # خروجی نهایی
 ```
 
-## Built with
+## ساختار داده‌ها
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+| فایل | کاربرد |
+|---|---|
+| `src/data/products.json` | محصولات و پلن‌های قیمتی هر محصول |
+| `src/data/faq.json` | سوالات متداول |
+| `src/data/testimonials.json` | نظرات مشتریان |
+| `src/data/sections.json` | ترتیب و فعال/غیرفعال بودن بخش‌های صفحه |
+| `src/config.ts` | نام برند، لینک ربات پشتیبانی، شبکه‌های اجتماعی |
+
+### افزودن محصول جدید
+
+کافی است یک آبجکت جدید به `src/data/products.json` اضافه کنید؛ کارت محصول در ویترین،
+تب جدید در بخش پلن‌ها، لینک در فوتر و داده ساختاریافته SEO به‌صورت خودکار ساخته می‌شوند
+(هیچ تغییری در کد لازم نیست).
+
+```json
+{
+  "id": "telegram-bot-panel",          // شناسه یکتا (در URL پلن‌ها استفاده می‌شود)
+  "name": "پنل مدیریت ربات تلگرام",
+  "category": "ربات‌های تلگرام",        // برای فیلتر دسته‌بندی و منوی هدر
+  "shortDescription": "توضیح ۱-۲ خطی",
+  "longDescription": "توضیح بلند (اختیاری)",
+  "icon": "send",                       // send | message-circle | users (پیش‌فرض: جعبه)
+  "appUrl": "https://panel.example.com",// آدرس بیرونی همین محصول
+  "features": ["ویژگی ۱", "ویژگی ۲"],
+  "plans": [
+    {
+      "id": "pro",                     // به‌صورت ?plan=pro به appUrl اضافه می‌شود
+      "name": "حرفه‌ای",
+      "priceToman": 990000,
+      "priceUSDT": 24,
+      "highlighted": true,             // نشان «پیشنهاد ویژه»
+      "features": ["امکان ۱", "امکان ۲", "امکان ۳", "امکان ۴"]
+    }
+  ]
+}
+```
+
+تعداد محصولات و پلن‌ها هاردکد نشده است. اگر بیش از ۶ محصول تعریف شود، نوار فیلتر دسته‌بندی
+به‌صورت خودکار بالای ویترین نمایش داده می‌شود.
+
+### لینک مستقیم به پلن‌های یک محصول
+
+`https://your-domain.com/#pricing?product=telegram-bot-panel`
+
+## مدیریت محتوا بدون کدنویسی
+
+دو مسیر پیشنهادی برای ویرایش فایل‌های JSON بدون دانش فنی:
+
+1. **ویرایشگر گیت‌هاب**: فایل `src/data/products.json` را در رابط وب گیت‌هاب باز کنید،
+   مقادیر را ویرایش و Commit کنید. با هر Commit، انتشار خودکار انجام می‌شود.
+2. **CMS مبتنی بر Git** (اختیاری): می‌توانید Decap CMS را با یک فایل `public/admin/config.yml`
+   و ورود از طریق OAuth گیت‌هاب اضافه کنید تا فرم‌های افزودن/ویرایش/حذف محصول در آدرس `/admin`
+   در دسترس باشد. دسترسی بدون احراز هویت معتبر نباید باز گذاشته شود.
+
+## انتشار و اتصال دامنه
+
+پروژه با یک کلیک از طریق دکمه **Publish** منتشر می‌شود و روی دامنه‌ی `*.lovable.app`
+با HTTPS خودکار در دسترس قرار می‌گیرد. هیچ دامنه‌ای در کد هاردکد نشده و تمام لینک‌های داخلی نسبی‌اند.
+
+### اتصال دامنه اصلی (`example.com`)
+
+1. در تنظیمات پروژه، بخش Domains، دامنه را اضافه کنید.
+2. در پنل DNS دامنه، رکوردهای اعلام‌شده را ثبت کنید (معمولاً یک رکورد `A` برای ریشه دامنه).
+3. صدور و تمدید گواهی SSL به‌صورت خودکار انجام می‌شود.
+
+### اتصال ساب‌دامین (`shop.example.com`)
+
+یک رکورد `CNAME` با نام `shop` به مقصد اعلام‌شده در تنظیمات دامنه ثبت کنید.
+
+### نکات
+
+- اگر DNS دامنه در Cloudflare مدیریت می‌شود، حالت Proxy را طبق راهنمای پنل تنظیم و SSL را روی
+  `Full` قرار دهید.
+- انتشار تغییرات DNS معمولاً بین چند دقیقه تا ۲۴ ساعت طول می‌کشد؛ وضعیت اتصال در بخش Domains قابل بررسی است.
+
+## امنیت
+
+- ورودی‌های فرم تماس در سمت کلاینت اعتبارسنجی و Sanitize می‌شوند (حذف `<` و `>` برای جلوگیری از XSS).
+- تمام لینک‌های خارجی با `rel="noopener noreferrer"` باز می‌شوند.
+- HTTPS در محیط Production به‌صورت پیش‌فرض فعال است.
+
+## دسترس‌پذیری و کارایی
+
+- انیمیشن‌ها با `IntersectionObserver` و با احترام به `prefers-reduced-motion`.
+- آکاردئون با `aria-expanded` / `aria-controls` و ناوبری کیبورد.
+- HTML معنایی، `alt` برای تصاویر و داده ساختاریافته از نوع `Product`.
