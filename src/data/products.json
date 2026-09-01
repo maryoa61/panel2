@@ -1,0 +1,105 @@
+[
+  {
+    "id": "telegram-bot-panel",
+    "name": "پنل مدیریت ربات تلگرام",
+    "category": "ربات‌های تلگرام",
+    "shortDescription": "مدیریت کامل ربات تلگرام بدون نیاز به کدنویسی، همراه با درگاه پرداخت داخلی.",
+    "longDescription": "یک پنل کامل برای مدیریت ربات فروش تلگرام: کاربران، سفارش‌ها، پرداخت‌ها و گزارش‌های لحظه‌ای.",
+    "icon": "send",
+    "appUrl": "https://telegram-panel.example.com",
+    "features": [
+      "مدیریت کامل ربات",
+      "درگاه پرداخت داخلی",
+      "گزارش فروش لحظه‌ای",
+      "مدیریت کاربران و اشتراک‌ها"
+    ],
+    "plans": [
+      {
+        "id": "basic",
+        "name": "پایه",
+        "priceToman": 490000,
+        "priceUSDT": 12,
+        "highlighted": false,
+        "features": ["۱ ربات فعال", "تا ۱۰۰۰ کاربر", "گزارش فروش پایه", "پشتیبانی تیکتی"]
+      },
+      {
+        "id": "pro",
+        "name": "حرفه‌ای",
+        "priceToman": 990000,
+        "priceUSDT": 24,
+        "highlighted": true,
+        "features": [
+          "۳ ربات فعال",
+          "کاربر نامحدود",
+          "درگاه بانکی و کریپتو",
+          "گزارش پیشرفته",
+          "پشتیبانی ۲۴ ساعته"
+        ]
+      },
+      {
+        "id": "enterprise",
+        "name": "سازمانی",
+        "priceToman": 2490000,
+        "priceUSDT": 59,
+        "highlighted": false,
+        "features": ["ربات نامحدود", "دامنه اختصاصی", "API اختصاصی", "نصب روی سرور شما", "پشتیبانی ویژه"]
+      }
+    ]
+  },
+  {
+    "id": "discord-bot-panel",
+    "name": "پنل مدیریت ربات دیسکورد",
+    "category": "ربات‌های دیسکورد",
+    "shortDescription": "کنترل کامل سرور و ربات دیسکورد با داشبورد فارسی و آمار زنده.",
+    "longDescription": "مدیریت نقش‌ها، تیکت‌ها، فروش اشتراک و آمار اعضای سرور دیسکورد در یک داشبورد یکپارچه.",
+    "icon": "message-circle",
+    "appUrl": "https://discord-panel.example.com",
+    "features": ["مدیریت نقش‌ها", "سیستم تیکت", "فروش اشتراک", "آمار زنده اعضا"],
+    "plans": [
+      {
+        "id": "basic",
+        "name": "پایه",
+        "priceToman": 390000,
+        "priceUSDT": 9,
+        "highlighted": false,
+        "features": ["۱ سرور", "مدیریت نقش‌ها", "سیستم تیکت", "پشتیبانی تیکتی"]
+      },
+      {
+        "id": "pro",
+        "name": "حرفه‌ای",
+        "priceToman": 890000,
+        "priceUSDT": 21,
+        "highlighted": true,
+        "features": ["۵ سرور", "فروش اشتراک", "درگاه کریپتو", "آمار پیشرفته", "پشتیبانی ۲۴ ساعته"]
+      }
+    ]
+  },
+  {
+    "id": "crm-panel",
+    "name": "پنل CRM اختصاصی",
+    "category": "CRM",
+    "shortDescription": "مدیریت مشتریان، فروش و پیگیری‌ها در یک سامانه اختصاصی و سریع.",
+    "longDescription": "قیف فروش، پیگیری مشتریان، یادآوری‌ها و گزارش درآمد برای تیم‌های فروش.",
+    "icon": "users",
+    "appUrl": "https://crm-panel.example.com",
+    "features": ["قیف فروش", "پیگیری خودکار", "گزارش درآمد", "مدیریت تیم"],
+    "plans": [
+      {
+        "id": "team",
+        "name": "تیمی",
+        "priceToman": 1290000,
+        "priceUSDT": 31,
+        "highlighted": true,
+        "features": ["۱۰ کاربر", "قیف فروش نامحدود", "گزارش‌های تحلیلی", "پشتیبانی ۲۴ ساعته"]
+      },
+      {
+        "id": "business",
+        "name": "کسب‌وکار",
+        "priceToman": 2990000,
+        "priceUSDT": 72,
+        "highlighted": false,
+        "features": ["کاربر نامحدود", "API اختصاصی", "بکاپ روزانه", "آموزش اختصاصی تیم"]
+      }
+    ]
+  }
+]

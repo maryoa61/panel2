@@ -1,0 +1,9 @@
+[
+  { "id": "hero", "enabled": true },
+  { "id": "why", "enabled": true },
+  { "id": "products", "enabled": true },
+  { "id": "pricing", "enabled": true },
+  { "id": "testimonials", "enabled": true },
+  { "id": "faq", "enabled": true },
+  { "id": "contact", "enabled": true }
+]
