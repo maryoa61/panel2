@@ -136,6 +136,52 @@
   }
 }
 
+@utility tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.1s ease-out,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.tilt-card {
+  --rx: 0deg;
+  --ry: 0deg;
+  --glow-opacity: 0;
+}
+
+.tilt-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: var(--radius);
+  background: radial-gradient(circle at 50% 120%, rgba(108, 60, 225, 0.55), transparent 60%);
+  opacity: var(--glow-opacity);
+  filter: blur(20px);
+  transform: translateZ(-40px);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.tilt-card.is-visible:hover {
+  transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-6px);
+  box-shadow: var(--shadow-glow);
+  border-color: rgba(108, 60, 225, 0.5);
+}
+
+@media (hover: none) {
+  .tilt-card.is-visible:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--border);
+  }
+  .tilt-card::before {
+    opacity: 0 !important;
+  }
+}
+
 @utility glow-text {
   background: linear-gradient(90deg, var(--accent), var(--primary));
   -webkit-background-clip: text;

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type MouseEvent } from "react";
 import { ArrowLeft, Send, MessageCircle, Users, Boxes } from "lucide-react";
 import { formatToman } from "@/config";
 import type { Product } from "@/lib/types";
@@ -23,6 +23,27 @@ export function ProductCatalog({
   );
   const [filter, setFilter] = useState("همه");
   const visible = filter === "همه" ? products : products.filter((p) => p.category === filter);
+
+  const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -5;
+    const rotateY = ((x - centerX) / centerX) * 5;
+    card.style.setProperty("--rx", `${rotateX}deg`);
+    card.style.setProperty("--ry", `${rotateY}deg`);
+    card.style.setProperty("--glow-opacity", "1");
+  };
+
+  const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
+    const card = e.currentTarget;
+    card.style.setProperty("--rx", "0deg");
+    card.style.setProperty("--ry", "0deg");
+    card.style.setProperty("--glow-opacity", "0");
+  };
 
   return (
     <section id="products" className="px-5 py-20">
@@ -61,8 +82,10 @@ export function ProductCatalog({
             return (
               <article
                 key={p.id}
-                className="glass-card glass-hover reveal flex flex-col p-6"
+                className="glass-card tilt-card reveal flex flex-col p-6"
                 data-reveal-index={i % 3}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
               >
                 <div className="flex items-center gap-3">
                   <span className="grid h-12 w-12 place-items-center rounded-xl bg-accent/15 text-accent">
