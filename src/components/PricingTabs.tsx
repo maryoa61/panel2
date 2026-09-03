@@ -91,7 +91,7 @@ export function PricingTabs({
                     : "border border-border text-foreground hover:bg-secondary"
                 }`}
               >
-                انتخاب این پلن
+                شروع کنید
               </a>
             </article>
           ))}
